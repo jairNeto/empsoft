@@ -3,18 +3,15 @@ package com.delaroystudios.MatchFood;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.View;
-import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
+import com.delaroystudios.MatchFood.adapter.RestaurantsAdapter;
+import com.delaroystudios.MatchFood.model.Restaurant;
 
 import java.util.ArrayList;
 import java.util.List;

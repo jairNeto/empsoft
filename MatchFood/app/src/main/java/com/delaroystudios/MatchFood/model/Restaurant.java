@@ -1,4 +1,4 @@
-package com.delaroystudios.MatchFood;
+package com.delaroystudios.MatchFood.model;
 
 /**
  * Created by Lincoln on 18/05/16.

@@ -1,8 +1,7 @@
-package com.delaroystudios.MatchFood;
+package com.delaroystudios.MatchFood.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.delaroystudios.MatchFood.DetailsActivity;
+import com.delaroystudios.MatchFood.R;
+import com.delaroystudios.MatchFood.model.Restaurant;
 
 import java.util.List;
 
