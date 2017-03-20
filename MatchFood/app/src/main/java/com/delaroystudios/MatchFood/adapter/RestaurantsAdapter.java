@@ -89,9 +89,7 @@ public class RestaurantsAdapter extends RecyclerView.Adapter<RestaurantsAdapter.
                         return true;
                     case R.id.action_details:
                         Intent intent = new Intent(mContext.getApplicationContext(), DetailsActivity.class);
-                        intent.putExtra("Restaurant", restaurant.getName());
-                        intent.putExtra("Options", restaurant.getOptions());
-                        intent.putExtra("Picture", restaurant.getThumbnail());
+                        intent.putExtra("Restaurant", restaurant);
                         mContext.startActivity(intent);
                         return true;
                     default:

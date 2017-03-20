@@ -11,6 +11,7 @@ import android.util.TypedValue;
 import android.view.View;
 
 import com.delaroystudios.MatchFood.adapter.RestaurantsAdapter;
+import com.delaroystudios.MatchFood.model.Plates;
 import com.delaroystudios.MatchFood.model.Restaurant;
 
 import java.util.ArrayList;
@@ -58,34 +59,44 @@ public class MainActivity extends AppCompatActivity {
                 R.drawable.album10,
                 R.drawable.album11};
 
-        Restaurant a = new Restaurant("Restaurante1", 13, covers[0]);
+        List<Plates> plates = new ArrayList<>();
+        plates.add(new Plates("Pizza de calabresa", 12, 4.5, 40));
+        plates.add(new Plates("Torta de frango", 2, 4.75, 38));
+        plates.add(new Plates("Pizza de frango", 12, 3.5, 45));
+        plates.add(new Plates("Pizza doce", 12, 2.5, 39.90));
+        plates.add(new Plates("Lasanha", 3, 4.5, 30));
+        plates.add(new Plates("Pizza de frango", 12, 5, 45.50));
+        plates.add(new Plates("Lasanha", 3, 4.5, 30));
+        plates.add(new Plates("Torta de frango", 2, 4.75, 29.90));
+
+        Restaurant a = new Restaurant("Restaurante1", 13, covers[0],plates);
         RestaurantList.add(a);
 
-        a = new Restaurant("Restaurante2", 8, covers[1]);
+        a = new Restaurant("Restaurante2", 8, covers[1], plates);
         RestaurantList.add(a);
 
-        a = new Restaurant("Restaurante3", 11, covers[2]);
+        a = new Restaurant("Restaurante3", 11, covers[2], plates);
         RestaurantList.add(a);
 
-        a = new Restaurant("Restaurante4", 12, covers[3]);
+        a = new Restaurant("Restaurante4", 12, covers[3], plates);
         RestaurantList.add(a);
 
-        a = new Restaurant("Restaurante5", 14, covers[4]);
+        a = new Restaurant("Restaurante5", 14, covers[4], plates);
         RestaurantList.add(a);
 
-        a = new Restaurant("Restaurante6", 5, covers[5]);
+        a = new Restaurant("Restaurante6", 5, covers[5], plates);
         RestaurantList.add(a);
 
-        a = new Restaurant("Restaurante7", 11, covers[6]);
+        a = new Restaurant("Restaurante7", 11, covers[6], plates);
         RestaurantList.add(a);
 
-        a = new Restaurant("Restaurante8", 10, covers[7]);
+        a = new Restaurant("Restaurante8", 10, covers[7],plates);
         RestaurantList.add(a);
 
-        a = new Restaurant("Restaurante9", 11, covers[8]);
+        a = new Restaurant("Restaurante9", 11, covers[8], plates);
         RestaurantList.add(a);
 
-        a = new Restaurant("Restaurante10", 17, covers[9]);
+        a = new Restaurant("Restaurante10", 17, covers[9],plates);
         RestaurantList.add(a);
 
         adapter.notifyDataSetChanged();
