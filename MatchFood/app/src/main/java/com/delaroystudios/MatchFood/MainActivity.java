@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RestaurantsAdapter adapter;
-    private List<Restaurant> RestaurantList;
+    private static List<Restaurant> RestaurantList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,56 +47,40 @@ public class MainActivity extends AppCompatActivity {
      */
     private void prepareAlbums() {
         int[] covers = new int[]{
-                R.drawable.album1,
-                R.drawable.album2,
-                R.drawable.album3,
-                R.drawable.album4,
-                R.drawable.album5,
-                R.drawable.album6,
-                R.drawable.album7,
-                R.drawable.album8,
-                R.drawable.album9,
-                R.drawable.album10,
-                R.drawable.album11};
+                R.drawable.amaranto,
+                R.drawable.bar,
+                R.drawable.camaroes,
+                R.drawable.galicia,
+                R.drawable.casona,
+                R.drawable.tasca,
+        };
+
+        int plate = R.drawable.plate;
 
         List<Plates> plates = new ArrayList<>();
-        plates.add(new Plates("Pizza de calabresa", 12, 4.5, 40));
-        plates.add(new Plates("Torta de frango", 2, 4.75, 38));
-        plates.add(new Plates("Pizza de frango", 12, 3.5, 45));
-        plates.add(new Plates("Pizza doce", 12, 2.5, 39.90));
-        plates.add(new Plates("Lasanha", 3, 4.5, 30));
-        plates.add(new Plates("Pizza de frango", 12, 5, 45.50));
-        plates.add(new Plates("Lasanha", 3, 4.5, 30));
-        plates.add(new Plates("Torta de frango", 2, 4.75, 29.90));
+        plates.add(new Plates("Prato 1", 12, 4.5, 40, plate));
+        plates.add(new Plates("Prato 2", 2, 4.75, 38, plate));
+        plates.add(new Plates("Prato 3", 12, 3.5, 45, plate));
+        plates.add(new Plates("Prato 4", 12, 2.5, 39.90, plate));
+        plates.add(new Plates("Prato 5", 3, 4.5, 30, plate));
+        plates.add(new Plates("Prato 6", 12, 5, 45.50, plate));
 
-        Restaurant a = new Restaurant("Restaurante1", 13, covers[0],plates);
+        Restaurant a = new Restaurant("Amaranto", covers[0], plates);
         RestaurantList.add(a);
 
-        a = new Restaurant("Restaurante2", 8, covers[1], plates);
+        a = new Restaurant("Bar do Cuscuz", covers[1], plates);
         RestaurantList.add(a);
 
-        a = new Restaurant("Restaurante3", 11, covers[2], plates);
+        a = new Restaurant("Camarões", covers[2], plates);
         RestaurantList.add(a);
 
-        a = new Restaurant("Restaurante4", 12, covers[3], plates);
+        a = new Restaurant("Galícia", covers[3], plates);
         RestaurantList.add(a);
 
-        a = new Restaurant("Restaurante5", 14, covers[4], plates);
+        a = new Restaurant("La Casona", covers[4], plates);
         RestaurantList.add(a);
 
-        a = new Restaurant("Restaurante6", 5, covers[5], plates);
-        RestaurantList.add(a);
-
-        a = new Restaurant("Restaurante7", 11, covers[6], plates);
-        RestaurantList.add(a);
-
-        a = new Restaurant("Restaurante8", 10, covers[7],plates);
-        RestaurantList.add(a);
-
-        a = new Restaurant("Restaurante9", 11, covers[8], plates);
-        RestaurantList.add(a);
-
-        a = new Restaurant("Restaurante10", 17, covers[9],plates);
+        a = new Restaurant("Tasca do Arouche", covers[5], plates);
         RestaurantList.add(a);
 
         adapter.notifyDataSetChanged();
@@ -146,5 +130,10 @@ public class MainActivity extends AppCompatActivity {
     private int dpToPx(int dp) {
         Resources r = getResources();
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
+    }
+
+    public static List<Restaurant> getRestaurantList()
+    {
+        return RestaurantList;
     }
 }

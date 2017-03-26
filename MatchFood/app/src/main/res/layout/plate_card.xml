@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:focusable="true"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
     android:clickable="true"
     android:background="?android:attr/selectableItemBackground"
     android:orientation="vertical">
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/card_margin"
+        android:elevation="4dp"
+        card_view:cardCornerRadius="20dp">
+
+    <LinearLayout
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_alignParentTop="true"
@@ -20,11 +25,13 @@
         android:layout_alignParentStart="true">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/album1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:id="@+id/picture"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/plate"/>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,6 +42,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Nome prato Aqui"
+                android:textColor="#000"
+                android:textSize="20dp"
                 android:id="@+id/name"
                 android:layout_marginTop="9dp"
                 android:layout_marginStart="16dp"
@@ -57,10 +66,26 @@
                 android:layout_marginTop="4dp"
                 style = "?android:attr/ratingBarStyleSmall"
                 android:numStars = "5"
+                android:layout_marginBottom="4dp"
                 />
 
         </LinearLayout>
 
     </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="comprar"
+            android:id="@+id/comprar"
+            android:textColor="#64DD17"
+            android:textSize="16dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="28dp"
+            android:layout_marginRight="10dp"/>
+
+    </android.support.v7.widget.CardView>
+
+
 
 </RelativeLayout>

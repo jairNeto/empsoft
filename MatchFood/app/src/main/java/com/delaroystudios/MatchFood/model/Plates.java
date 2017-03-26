@@ -6,15 +6,20 @@ package com.delaroystudios.MatchFood.model;
 
 public class Plates {
     private String name;
-    private int amount;
+    private int amount, thumbnail;
     private double evaluation, price;
 
-    public Plates(String name, int amount, double evaluation, double price){
+    public Plates(String name, int amount, double evaluation, double price, int thumbnail){
         this.name = name;
         this.amount = amount;
         this.evaluation = evaluation;
         this.price = price;
+        this.thumbnail = thumbnail;
     }
+
+    public int getThumbnail(){ return thumbnail; }
+
+    public void setThumbnail(int thumbnail){ this.thumbnail = thumbnail; }
 
     public String getName() {
         return name;

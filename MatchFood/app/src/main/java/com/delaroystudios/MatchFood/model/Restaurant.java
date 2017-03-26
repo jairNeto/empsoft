@@ -10,20 +10,17 @@ import java.util.List;
  */
 public class Restaurant implements Parcelable{
     private String name;
-    private int options;
     private int thumbnail;
     private List<Plates> plates;
 
-    public Restaurant(String name, int options, int thumbnail, List<Plates> plates) {
+    public Restaurant(String name, int thumbnail, List<Plates> plates) {
         this.name = name;
-        this.options = options;
         this.thumbnail = thumbnail;
         this.plates = plates;
     }
 
     protected Restaurant(Parcel in) {
         name = in.readString();
-        options = in.readInt();
         thumbnail = in.readInt();
     }
 
@@ -45,14 +42,6 @@ public class Restaurant implements Parcelable{
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getOptions() {
-        return options;
-    }
-
-    public void setOptions(int options) {
-        this.options = options;
     }
 
     public int getThumbnail() {
@@ -80,7 +69,6 @@ public class Restaurant implements Parcelable{
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
         dest.writeInt(thumbnail);
-        dest.writeInt(options);
 
     }
 }

@@ -29,18 +29,15 @@ public class RestaurantsAdapter extends RecyclerView.Adapter<RestaurantsAdapter.
     private List<Restaurant> restaurantList;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, count;
-        public ImageView thumbnail, overflow;
+        public TextView title;
+        public ImageView thumbnail;
 
         public MyViewHolder(View view) {
             super(view);
             title = (TextView) view.findViewById(R.id.title);
-            count = (TextView) view.findViewById(R.id.count);
             thumbnail = (ImageView) view.findViewById(R.id.thumbnail);
-            overflow = (ImageView) view.findViewById(R.id.overflow);
         }
     }
-
 
     public RestaurantsAdapter(Context mContext, List<Restaurant> restaurantList) {
         this.mContext = mContext;
@@ -59,45 +56,17 @@ public class RestaurantsAdapter extends RecyclerView.Adapter<RestaurantsAdapter.
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final Restaurant restaurant = restaurantList.get(position);
         holder.title.setText(restaurant.getName());
-        holder.count.setText(restaurant.getOptions() + " opções");
 
-        // loading album cover using Glide library
         Glide.with(mContext).load(restaurant.getThumbnail()).into(holder.thumbnail);
 
-        holder.overflow.setOnClickListener(new View.OnClickListener() {
+        holder.thumbnail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPopupMenu(holder.overflow, restaurant);
+                Intent intent = new Intent(mContext.getApplicationContext(), DetailsActivity.class);
+                intent.putExtra("Restaurant", restaurant.getName());
+                mContext.startActivity(intent);
             }
         });
-    }
-
-    /**
-     * Showing popup menu when tapping on 3 dots
-     */
-    private void showPopupMenu(View view, final Restaurant restaurant) {
-        // inflate menu
-        PopupMenu popup = new PopupMenu(mContext, view);
-        final MenuInflater inflater = popup.getMenuInflater();
-        inflater.inflate(R.menu.menu_album, popup.getMenu());
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.action_add_favourite:
-                        Toast.makeText(mContext, "Adicionado aos favoritos", Toast.LENGTH_SHORT).show();
-                        return true;
-                    case R.id.action_details:
-                        Intent intent = new Intent(mContext.getApplicationContext(), DetailsActivity.class);
-                        intent.putExtra("Restaurant", restaurant);
-                        mContext.startActivity(intent);
-                        return true;
-                    default:
-                }
-                return false;
-            }
-        });
-        popup.show();
     }
 
     @Override
