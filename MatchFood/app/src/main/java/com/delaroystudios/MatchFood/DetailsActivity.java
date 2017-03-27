@@ -1,8 +1,14 @@
 package com.delaroystudios.MatchFood;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,6 +24,7 @@ import com.bumptech.glide.Glide;
 import com.delaroystudios.MatchFood.adapter.PlatesAdapter;
 import com.delaroystudios.MatchFood.model.Plates;
 import com.delaroystudios.MatchFood.model.Restaurant;
+
 import java.util.List;
 
 public class DetailsActivity extends AppCompatActivity {
@@ -26,10 +33,19 @@ public class DetailsActivity extends AppCompatActivity {
     private RecyclerView  recyclerView;
     private Restaurant    restaurant;
     private List<Plates>  plates;
+    private Handler mHandler = new Handler();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        mHandler.postDelayed(new Runnable() {
+            public void run() {
+                doStuff();
+            }
+        }, 10000);
+
         setContentView(R.layout.activity_details);
 
         List<Restaurant> restaurants = MainActivity.getRestaurantList();
@@ -101,6 +117,20 @@ public class DetailsActivity extends AppCompatActivity {
         recyclerView.getLayoutParams().height = valueMultiplier * restaurant.getPlates().size();
         FrameLayout y = (FrameLayout) findViewById(R.id.frameLayout);
         y.requestFocus();
+    }
+
+    private void doStuff() {
+        NotificationCompat.Builder mBuilder =   new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.camaroes) // notification icon
+                .setContentTitle("Pagamento Confirmado!") // title for notification
+                .setContentText("Camarões | Prato 1") // message for notification
+                .setAutoCancel(true); // clear notification after click
+        Intent intent = new Intent(this, MainActivity.class);
+        PendingIntent pi = PendingIntent.getActivity(this,0,intent,Intent.FLAG_ACTIVITY_NEW_TASK);
+        mBuilder.setContentIntent(pi);
+        NotificationManager mNotificationManager =
+                (NotificationManager) getSystemService(getApplicationContext().NOTIFICATION_SERVICE);
+        mNotificationManager.notify(0, mBuilder.build());
     }
 
 }
