@@ -46,7 +46,7 @@ public class PlatesAdapter extends RecyclerView.Adapter<PlatesAdapter.MyViewHold
 
         holder.rating.setRating((float) plate.getEvaluation());
         holder.name.setText(plate.getName());
-        holder.amount.setText(plate.getAmount() + " pessoas. Preço: " + plate.getPrice() + "R$");
+        holder.amount.setText(plate.getAmount() + " pessoas. Preço: R$" + plate.getPrice() + "");
 
         Glide.with(context).load(plate.getThumbnail()).into(holder.picture);
 
