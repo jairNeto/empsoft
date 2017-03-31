@@ -14,10 +14,11 @@ import com.delaroystudios.MatchFood.R;
 import com.delaroystudios.MatchFood.adapter.OrdersAdapter;
 import com.delaroystudios.MatchFood.model.Order;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListOrdersFragment extends Fragment {
-    private List<Order> orders;
+    private List<Order> orders = new ArrayList();
     private RecyclerView recyclerView;
     private OrdersAdapter ordersAdapter;
     public ListOrdersFragment(){

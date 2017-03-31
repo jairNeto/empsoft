@@ -1,5 +1,6 @@
 package com.delaroystudios.MatchFood;
 
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,6 +9,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.delaroystudios.MatchFood.fragment.ListOrdersFragment;
 import com.delaroystudios.MatchFood.model.Order;
@@ -17,25 +21,31 @@ import com.delaroystudios.MatchFood.model.Restaurant;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyOrdersActivity extends AppCompatActivity {
-
-    private Toolbar toolbar;
+public class MyOrdersActivity extends Fragment {
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_orders);
+    public MyOrdersActivity(){
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(" Pedidos");
-        setSupportActionBar(toolbar);
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View v =  inflater.inflate(R.layout.activity_my_orders, container, false);
+
+        viewPager = (ViewPager) v.findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout = (TabLayout) v.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);setupTabIcons();
+
+        return v;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     private void setupTabIcons() {
@@ -45,7 +55,7 @@ public class MyOrdersActivity extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
         List<Order> orders = new ArrayList<>();
 
         //TESTE
@@ -67,10 +77,7 @@ public class MyOrdersActivity extends AppCompatActivity {
         orders.add(new Order(c,plates.get(2),"30 de abril de 2017 - as 12:30h"));
 
         adapter.addFragment(new ListOrdersFragment(orders), "ONE");
-        List<Order> orders2 = new ArrayList<>();
-        orders2.addAll(orders);
-        orders2.remove(0);
-        adapter.addFragment(new ListOrdersFragment(orders2), "TWO");
+        adapter.addFragment(new ListOrdersFragment(orders), "TWO");
         adapter.addFragment(new ListOrdersFragment(orders), "THREE");
         viewPager.setAdapter(adapter);
     }

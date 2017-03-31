@@ -4,65 +4,62 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.delaroystudios.MatchFood.adapter.RestaurantsAdapter;
+import com.delaroystudios.MatchFood.model.Order;
 import com.delaroystudios.MatchFood.model.Plates;
 import com.delaroystudios.MatchFood.model.Restaurant;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Fragment{
 
     private RecyclerView recyclerView;
     private RestaurantsAdapter adapter;
     private static List<Restaurant> RestaurantList;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public MainActivity(){
+    }
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View v =  inflater.inflate(R.layout.activity_main, container, false);
+
+        recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view);
 
         RestaurantList = new ArrayList<>();
-        adapter = new RestaurantsAdapter(this, RestaurantList);
+        adapter = new RestaurantsAdapter(getContext(), RestaurantList);
 
-        ImageView search = (ImageView) findViewById(R.id.search_btn);
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                callOrders();
-            }
-
-
-        });
-
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
 
         prepareAlbums();
+        return v;
     }
 
-    private void callOrders() {
-        Intent i;
-        i = new Intent(this, MyOrdersActivity.class);
-        startActivity(i);
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
-    /**
-     * Adding few albums for testing
-     */
     private void prepareAlbums() {
         int[] covers = new int[]{
                 R.drawable.amaranto,

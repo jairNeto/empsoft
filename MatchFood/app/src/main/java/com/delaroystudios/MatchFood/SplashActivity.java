@@ -13,6 +13,7 @@ import com.delaroystudios.MatchFood.R;
 public class SplashActivity extends AppCompatActivity {
     private static final long SPLASH_TIME_OUT = 2978;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +34,7 @@ public class SplashActivity extends AppCompatActivity {
 
         private void openLoginScreen() {
             Intent i;
-            i = new Intent(SplashActivity.this, MainActivity.class);
+            i = new Intent(SplashActivity.this, BottomBarActivity.class);
             startActivity(i);
             finish();
         }
