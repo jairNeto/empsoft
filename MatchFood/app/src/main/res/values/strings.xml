@@ -1,6 +1,13 @@
 <resources>
-    <string name="app_name">MatchFood</string>
+    <string name="app_name">Share Food</string>
     <string name="action_settings">Settings</string>
     <string name="action_add_favourite">favoritos</string>
     <string name="action_detail">detalhes</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_bottom_bar">BottomBarActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

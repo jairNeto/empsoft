@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
-
 import com.delaroystudios.MatchFood.R;
 
 public class SplashActivity extends AppCompatActivity {

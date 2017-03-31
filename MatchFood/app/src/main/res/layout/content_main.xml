@@ -38,6 +38,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/search"
+            android:id="@+id/search_btn"
             android:layout_margin="8dp"
             android:layout_gravity="right"/>
 

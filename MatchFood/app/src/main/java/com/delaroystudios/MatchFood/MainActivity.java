@@ -1,5 +1,6 @@
 package com.delaroystudios.MatchFood;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.delaroystudios.MatchFood.adapter.RestaurantsAdapter;
 import com.delaroystudios.MatchFood.model.Plates;
@@ -33,6 +35,16 @@ public class MainActivity extends AppCompatActivity {
         RestaurantList = new ArrayList<>();
         adapter = new RestaurantsAdapter(this, RestaurantList);
 
+        ImageView search = (ImageView) findViewById(R.id.search_btn);
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callOrders();
+            }
+
+
+        });
+
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
@@ -40,6 +52,12 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         prepareAlbums();
+    }
+
+    private void callOrders() {
+        Intent i;
+        i = new Intent(this, MyOrdersActivity.class);
+        startActivity(i);
     }
 
     /**
