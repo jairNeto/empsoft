@@ -6,16 +6,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.delaroystudios.MatchFood.fragment.ListOrdersFragment;
 import com.delaroystudios.MatchFood.model.Order;
-import com.delaroystudios.MatchFood.model.Plates;
+import com.delaroystudios.MatchFood.model.Plate;
 import com.delaroystudios.MatchFood.model.Restaurant;
 
 import java.util.ArrayList;
@@ -60,13 +58,13 @@ public class MyOrdersActivity extends Fragment {
 
         //TESTE
         int plate = R.drawable.plate;
-        List<Plates> plates = new ArrayList<>();
-        plates.add(new Plates("Camarão ao Thermidor", 12, 4.5, 40, plate));
-        plates.add(new Plates("Risoto de Bacalhau", 2, 4.75, 38, plate));
-        plates.add(new Plates("Carne de Sol na nata", 12, 3.5, 45, plate));
-        plates.add(new Plates("Prato 4", 12, 2.5, 39.90, plate));
-        plates.add(new Plates("Prato 5", 3, 4.5, 30, plate));
-        plates.add(new Plates("Prato 6", 12, 5, 45.50, plate));
+        List<Plate> plates = new ArrayList<>();
+        plates.add(new Plate("Camarão ao Thermidor", 12, 4.5, 40, plate));
+        plates.add(new Plate("Risoto de Bacalhau", 2, 4.75, 38, plate));
+        plates.add(new Plate("Carne de Sol na nata", 12, 3.5, 45, plate));
+        plates.add(new Plate("Prato 4", 12, 2.5, 39.90, plate));
+        plates.add(new Plate("Prato 5", 3, 4.5, 30, plate));
+        plates.add(new Plate("Prato 6", 12, 5, 45.50, plate));
 
         Restaurant a = new Restaurant("Amaranto",R.drawable.amaranto, plates);
         Restaurant b = new Restaurant("Camarões",R.drawable.camaroes, plates);

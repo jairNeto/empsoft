@@ -4,12 +4,12 @@ package com.delaroystudios.MatchFood.model;
  * Created by Lucas on 20/03/2017.
  */
 
-public class Plates {
+public class Plate {
     private String name;
     private int amount, thumbnail;
     private double evaluation, price;
 
-    public Plates(String name, int amount, double evaluation, double price, int thumbnail){
+    public Plate(String name, int amount, double evaluation, double price, int thumbnail){
         this.name = name;
         this.amount = amount;
         this.evaluation = evaluation;

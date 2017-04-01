@@ -6,10 +6,10 @@ package com.delaroystudios.MatchFood.model;
 
 public class Order {
     private Restaurant restaurant;
-    private Plates plate;
+    private Plate plate;
     private String date;
 
-    public Order(Restaurant restaurant, Plates plate, String date){
+    public Order(Restaurant restaurant, Plate plate, String date){
         this.restaurant = restaurant;
         this.plate = plate;
         this.date = date;
@@ -23,11 +23,11 @@ public class Order {
         this.restaurant = restaurant;
     }
 
-    public Plates getPlate() {
+    public Plate getPlate() {
         return plate;
     }
 
-    public void setPlate(Plates plate) {
+    public void setPlate(Plate plate) {
         this.plate = plate;
     }
 

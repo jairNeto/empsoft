@@ -11,9 +11,9 @@ import java.util.List;
 public class Restaurant implements Parcelable{
     private String name;
     private int thumbnail;
-    private List<Plates> plates;
+    private List<Plate> plates;
 
-    public Restaurant(String name, int thumbnail, List<Plates> plates) {
+    public Restaurant(String name, int thumbnail, List<Plate> plates) {
         this.name = name;
         this.thumbnail = thumbnail;
         this.plates = plates;
@@ -52,11 +52,11 @@ public class Restaurant implements Parcelable{
         this.thumbnail = thumbnail;
     }
 
-    public List<Plates> getPlates() {
+    public List<Plate> getPlates() {
         return plates;
     }
 
-    public void setPlates(List<Plates> plates) {
+    public void setPlates(List<Plate> plates) {
         this.plates = plates;
     }
 

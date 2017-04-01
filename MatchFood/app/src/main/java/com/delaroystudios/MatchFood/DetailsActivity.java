@@ -2,11 +2,9 @@ package com.delaroystudios.MatchFood;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -22,7 +20,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.delaroystudios.MatchFood.adapter.PlatesAdapter;
-import com.delaroystudios.MatchFood.model.Plates;
+import com.delaroystudios.MatchFood.model.Plate;
 import com.delaroystudios.MatchFood.model.Restaurant;
 
 import java.util.List;
@@ -32,19 +30,12 @@ public class DetailsActivity extends AppCompatActivity {
     private PlatesAdapter newsListAdapter;
     private RecyclerView  recyclerView;
     private Restaurant    restaurant;
-    private List<Plates>  plates;
-    private Handler mHandler = new Handler();
+    private List<Plate>  plates;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        mHandler.postDelayed(new Runnable() {
-            public void run() {
-                doStuff();
-            }
-        }, 10000);
 
         setContentView(R.layout.activity_details);
 

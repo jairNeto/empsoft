@@ -1,9 +1,14 @@
 package com.delaroystudios.MatchFood.adapter;
 
 import android.app.Dialog;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,8 +21,9 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.delaroystudios.MatchFood.MainActivity;
 import com.delaroystudios.MatchFood.R;
-import com.delaroystudios.MatchFood.model.Plates;
+import com.delaroystudios.MatchFood.model.Plate;
 
 import java.util.List;
 
@@ -27,9 +33,10 @@ import java.util.List;
 
 public class PlatesAdapter extends RecyclerView.Adapter<PlatesAdapter.MyViewHolder>{
     private Context context;
-    private List<Plates> plates;
+    private List<Plate> plates;
+    private Handler mHandler = new Handler();
 
-    public PlatesAdapter(Context context, List<Plates> platesRestaurant){
+    public PlatesAdapter(Context context, List<Plate> platesRestaurant){
         this.context = context;
         this.plates = platesRestaurant;
     }
@@ -42,7 +49,7 @@ public class PlatesAdapter extends RecyclerView.Adapter<PlatesAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        Plates plate = plates.get(position);
+        Plate plate = plates.get(position);
 
         holder.rating.setRating((float) plate.getEvaluation());
         holder.name.setText(plate.getName());
@@ -63,7 +70,7 @@ public class PlatesAdapter extends RecyclerView.Adapter<PlatesAdapter.MyViewHold
         return plates.size();
     }
 
-    public void update(List<Plates> plates) {
+    public void update(List<Plate> plates) {
         this.plates = plates;
     }
 
@@ -93,7 +100,9 @@ public class PlatesAdapter extends RecyclerView.Adapter<PlatesAdapter.MyViewHold
     }
 
     private void showPopupMenu() {
-        Dialog dialog = new Dialog(context, android.R.style.Theme_Dialog);
+        View v  = LayoutInflater.from(context).inflate(R.layout.alert,null);
+
+        final Dialog dialog = new Dialog(context, android.R.style.Theme_Dialog);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.alert);
         dialog.setCanceledOnTouchOutside(true);
@@ -101,5 +110,33 @@ public class PlatesAdapter extends RecyclerView.Adapter<PlatesAdapter.MyViewHold
         dialog.getWindow().setLayout(RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
+
+        Button button = (Button) dialog.findViewById(R.id.confirm);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+
+                mHandler.postDelayed(new Runnable() {
+                    public void run() {
+                        doStuff();
+                    }
+                }, 10000);
+            }
+        });
+    }
+
+    private void doStuff() {
+        NotificationCompat.Builder mBuilder =   new NotificationCompat.Builder(context)
+                .setSmallIcon(R.drawable.camaroes) // notification icon
+                .setContentTitle("Pagamento Confirmado!") // title for notification
+                .setContentText("Camarões | Prato 1") // message for notification
+                .setAutoCancel(true); // clear notification after click
+        Intent intent = new Intent(context, MainActivity.class);
+        PendingIntent pi = PendingIntent.getActivity(context,0,intent,Intent.FLAG_ACTIVITY_NEW_TASK);
+        mBuilder.setContentIntent(pi);
+        NotificationManager mNotificationManager =
+                (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
+        mNotificationManager.notify(0, mBuilder.build());
     }
 }

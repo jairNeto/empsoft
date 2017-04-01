@@ -1,12 +1,10 @@
 package com.delaroystudios.MatchFood;
 
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,12 +12,12 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.delaroystudios.MatchFood.adapter.RestaurantsAdapter;
-import com.delaroystudios.MatchFood.model.Order;
-import com.delaroystudios.MatchFood.model.Plates;
+import com.delaroystudios.MatchFood.model.Plate;
 import com.delaroystudios.MatchFood.model.Restaurant;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,12 +29,16 @@ public class MainActivity extends Fragment{
     private static List<Restaurant> RestaurantList;
 
     public MainActivity(){
+
     }
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        Toast.makeText(getContext(), "Bem vindo " + ParseUser.getCurrentUser().getUsername(), Toast.LENGTH_LONG).show();
+
         View v =  inflater.inflate(R.layout.activity_main, container, false);
 
         recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view);
@@ -72,13 +74,13 @@ public class MainActivity extends Fragment{
 
         int plate = R.drawable.plate;
 
-        List<Plates> plates = new ArrayList<>();
-        plates.add(new Plates("Prato 1", 12, 4.5, 40, plate));
-        plates.add(new Plates("Prato 2", 2, 4.75, 38, plate));
-        plates.add(new Plates("Prato 3", 12, 3.5, 45, plate));
-        plates.add(new Plates("Prato 4", 12, 2.5, 39.90, plate));
-        plates.add(new Plates("Prato 5", 3, 4.5, 30, plate));
-        plates.add(new Plates("Prato 6", 12, 5, 45.50, plate));
+        List<Plate> plates = new ArrayList<>();
+        plates.add(new Plate("Prato 1", 12, 4.5, 40, plate));
+        plates.add(new Plate("Prato 2", 2, 4.75, 38, plate));
+        plates.add(new Plate("Prato 3", 12, 3.5, 45, plate));
+        plates.add(new Plate("Prato 4", 12, 2.5, 39.90, plate));
+        plates.add(new Plate("Prato 5", 3, 4.5, 30, plate));
+        plates.add(new Plate("Prato 6", 12, 5, 45.50, plate));
 
         Restaurant a = new Restaurant("Amaranto", covers[0], plates);
         RestaurantList.add(a);
