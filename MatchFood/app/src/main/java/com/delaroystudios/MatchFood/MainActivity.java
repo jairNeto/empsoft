@@ -67,9 +67,10 @@ public class MainActivity extends Fragment{
                 R.drawable.amaranto,
                 R.drawable.bar,
                 R.drawable.camaroes,
-                R.drawable.galicia,
+                R.drawable.dominos,
                 R.drawable.casona,
                 R.drawable.tasca,
+
         };
 
         int plate = R.drawable.plate;
@@ -82,16 +83,16 @@ public class MainActivity extends Fragment{
         plates.add(new Plate("Prato 5", 3, 4.5, 30, plate));
         plates.add(new Plate("Prato 6", 12, 5, 45.50, plate));
 
-        Restaurant a = new Restaurant("Amaranto", covers[0], plates);
+        Restaurant a = new Restaurant("Amaranto", covers[0], getAmarantoPlates());
         RestaurantList.add(a);
 
-        a = new Restaurant("Bar do Cuscuz", covers[1], plates);
+        a = new Restaurant("Bar do Cuscuz", covers[1], getBDCPlates());
         RestaurantList.add(a);
 
         a = new Restaurant("Camarões", covers[2], plates);
         RestaurantList.add(a);
 
-        a = new Restaurant("Galícia", covers[3], plates);
+        a = new Restaurant("Domino's", covers[3], getDominosPlates());
         RestaurantList.add(a);
 
         a = new Restaurant("La Casona", covers[4], plates);
@@ -147,6 +148,39 @@ public class MainActivity extends Fragment{
     private int dpToPx(int dp) {
         Resources r = getResources();
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
+    }
+
+    private List<Plate> getAmarantoPlates() {
+        List<Plate> plates = new ArrayList<>();
+        plates.add(new Plate("Salada Amaranto", 2, 4.5, 40, R.drawable.amaranto_vila1));
+        plates.add(new Plate("Nchoque Bolonhesa", 2, 4.75, 45, R.drawable.amarantovila2));
+        plates.add(new Plate("Escalope de Salmão", 3, 3.5, 90, R.drawable.amarantovila3));
+        plates.add(new Plate("Filé 4 estações", 3, 2.5, 85, R.drawable.amarantovila4));
+        plates.add(new Plate("Surpresa de morango", 2, 4.5, 28, R.drawable.amarantovila5));
+        return plates;
+    }
+
+    private List<Plate> getBDCPlates() {
+        int plate = R.drawable.plate;
+        List<Plate> plates = new ArrayList<>();
+        plates.add(new Plate("Carne de Sol na nata", 3, 4.8, 50, R.drawable.carnedesolcomnata));
+        plates.add(new Plate("Frango na chapa", 3, 4.25, 45, R.drawable.frangogrelhada));
+        plates.add(new Plate("Galinha Guisada", 3, 3.5, 45, R.drawable.galinhaguisada));
+        plates.add(new Plate("Picanha", 4, 5.5, 95, R.drawable.picanha));
+        plates.add(new Plate("Sinfonia", 2, 4.5, 60, plate));
+        return plates;
+    }
+
+    private List<Plate> getDominosPlates() {
+        int pizza = R.drawable.dominospizza;
+        List<Plate> plates = new ArrayList<>();
+        plates.add(new Plate("Pizza pequena", 2, 4.8, 25, pizza));
+        plates.add(new Plate("Pizza média", 3, 4.8, 35, pizza));
+        plates.add(new Plate("Pizza grande", 4, 4.8, 42, pizza));
+        plates.add(new Plate("Pizza gigante", 5, 4.8, 48, pizza));
+        plates.add(new Plate("Pizza gigante especial", 2, 5.0, 55, pizza));
+
+        return plates;
     }
 
     public static List<Restaurant> getRestaurantList()
