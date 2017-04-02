@@ -68,7 +68,7 @@ public class MainActivity extends Fragment{
                 R.drawable.bar,
                 R.drawable.camaroes,
                 R.drawable.dominos,
-                R.drawable.casona,
+                R.drawable.galicia,
                 R.drawable.tasca,
 
         };
@@ -95,7 +95,7 @@ public class MainActivity extends Fragment{
         a = new Restaurant("Domino's", covers[3], getDominosPlates());
         RestaurantList.add(a);
 
-        a = new Restaurant("La Casona", covers[4], plates);
+        a = new Restaurant("Galícia", covers[4], plates);
         RestaurantList.add(a);
 
         a = new Restaurant("Tasca do Arouche", covers[5], plates);
