@@ -76,12 +76,12 @@ public class MainActivity extends Fragment{
         int plate = R.drawable.plate;
 
         List<Plate> plates = new ArrayList<>();
-        plates.add(new Plate("Prato 1", 12, 4.5, 40, plate));
-        plates.add(new Plate("Prato 2", 2, 4.75, 38, plate));
-        plates.add(new Plate("Prato 3", 12, 3.5, 45, plate));
-        plates.add(new Plate("Prato 4", 12, 2.5, 39.90, plate));
-        plates.add(new Plate("Prato 5", 3, 4.5, 30, plate));
-        plates.add(new Plate("Prato 6", 12, 5, 45.50, plate));
+        plates.add(new Plate("Bacalhau da Tasca", 12, 4.5, 40, plate));
+        plates.add(new Plate("Arroz de Pato", 2, 4.75, 38, plate));
+        plates.add(new Plate("Bacalhau Lagreiro", 12, 3.5, 45, plate));
+        plates.add(new Plate("Arroz de Braga", 4, 2.5, 39.90, plate));
+        plates.add(new Plate("Medalhão Funghi", 3, 4.5, 30, plate));
+        plates.add(new Plate("Posta de bacalhau", 2, 5, 35.50, plate));
 
         Restaurant a = new Restaurant("Amaranto", covers[0], getAmarantoPlates());
         RestaurantList.add(a);
@@ -89,13 +89,13 @@ public class MainActivity extends Fragment{
         a = new Restaurant("Bar do Cuscuz", covers[1], getBDCPlates());
         RestaurantList.add(a);
 
-        a = new Restaurant("Camarões", covers[2], plates);
+        a = new Restaurant("Camarões", covers[2], getBDCPlates());
         RestaurantList.add(a);
 
         a = new Restaurant("Domino's", covers[3], getDominosPlates());
         RestaurantList.add(a);
 
-        a = new Restaurant("Galícia", covers[4], plates);
+        a = new Restaurant("Galícia", covers[4], getAmarantoPlates());
         RestaurantList.add(a);
 
         a = new Restaurant("Tasca do Arouche", covers[5], plates);
