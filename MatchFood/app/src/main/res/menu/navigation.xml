@@ -16,9 +16,12 @@
         android:icon="@drawable/card_icon"
         android:title="" />
 
+    <!--
     <item
         android:id="@+id/navigation_settings"
         android:icon="@drawable/settings_icon"
         android:title="" />
+
+       -->
 
 </menu>
