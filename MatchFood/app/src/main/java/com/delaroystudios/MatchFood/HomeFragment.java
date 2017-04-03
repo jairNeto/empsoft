@@ -54,13 +54,13 @@ public class HomeFragment extends Fragment {
 
     private List<Request> getRequests() {
         int pizza = R.drawable.dominospizza;
-        int user = R.drawable.user;
+        int user = R.drawable.user2;
         List<Request> requests = new ArrayList<>();
         requests.add(new Request("Pizza pequena", 2, pizza, user, 4.8, 25, 5));
         requests.add(new Request("Pizza média", 3, pizza, user, 4.8, 35, 5));
         requests.add(new Request("Pizza grande", 4, pizza, user, 4.8, 42, 5));
         requests.add(new Request("Pizza gigante", 5, pizza, user, 4.8, 48, 5));
-        requests.add(new Request("Pizza gigante especial", 5, pizza, user, 5.0, 55, 5));
+        requests.add(new Request("Pizza especial", 5, pizza, user, 5.0, 55, 5));
 
         return requests;
     }

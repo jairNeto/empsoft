@@ -67,7 +67,7 @@ public class MainActivity extends Fragment{
                 R.drawable.amaranto,
                 R.drawable.bar,
                 R.drawable.camaroes,
-                R.drawable.dominos,
+                R.drawable.dominos2,
                 R.drawable.galicia,
                 R.drawable.tasca,
 

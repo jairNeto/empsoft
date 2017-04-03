@@ -43,7 +43,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.MyViewHo
         holder.plateRating.setRating((float) request.getPlateEvaluation());
         holder.name.setText(request.getName());
         holder.amount.setText(request.getAmount() + " pessoas. Preço: R$" + request.getPrice() + "");
-        holder.userRating.setRating((float) request.getUserEvaluation());
+//        holder.userRating.setRating((float) request.getUserEvaluation());
 
         Glide.with(context).load(request.getUserThumbnail()).into(holder.userPicture);
         Glide.with(context).load(request.getPlateThumbnail()).into(holder.platePicture);
@@ -75,7 +75,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.MyViewHo
             this.platePicture = (ImageView) itemView.findViewById(R.id.plate_picture);
             this.plateRating = (RatingBar) itemView.findViewById(R.id.plate_rating);
             this.userPicture = (ImageView) itemView.findViewById(R.id.user_picture);
-            this.userRating = (RatingBar) itemView.findViewById(R.id.user_rating);
+            //this.userRating = (RatingBar) itemView.findViewById(R.id.user_rating);
 
             itemView.setOnClickListener(this);
         }
